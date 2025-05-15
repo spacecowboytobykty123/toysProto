@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package toys;
+
+option go_package = "Stoys.v1;toys";
+
+service Toys {
+  rpc CreateToy (CreateToyRequest) returns (CreateToyResponse);
+  rpc DeleteToy (DeleteToyRequest) returns (DeleteToyResponse);
+  rpc ChangeToy (ChangeToyRequest) returns (ChangeToyResponse);
+  rpc GetToy (GetToyRequest) returns (GetToyResponse);
+  rpc ListToy (ListToyRequest) returns (ListToyResponse);
+  rpc ListRecommended (ListRecommendedRequest) returns (ListRecommendedResponse);
+}
+
+enum Status {
+  STATUS_OK = 0;
+  STATUS_INVALID_TITLE = 1;
+  STATUS_INVALID_DESC = 2;
+  STATUS_INVALID_VALUE = 3;
+  STATUS_INVALID_IMAGES = 4;
+  STATUS_INVALID_CATEGORIES = 5;
+  STATUS_INVALID_RECAGE = 6;
+  STATUS_INVALID_MANUFACTURER = 7;
+}
+
+message Toy {
+  int64 id = 1;
+  string title = 2;
+  string desc = 3;
+  int64 value = 4;
+  repeated string images = 5;
+  repeated string skills = 6;
+  repeated string categories = 7;
+  string recommended_age = 8;
+  string manufacturer = 9;
+  bool isAvailable = 10;
+}
+
+message Metadata {
+  int32 CurrentPage = 1;
+  int32 PageSize = 2;
+  int32 FirstPage = 3;
+  int32 LastPage = 4;
+  int32 TotalRecords = 5;
+}
+
+
+message CreateToyRequest {
+  string title = 1;
+  string desc = 2;
+  int64 value = 3;
+  repeated string images = 4;
+  repeated string skills = 5;
+  repeated string categories = 6;
+  string recommended_age = 7;
+  string manufacturer = 8;
+  bool isAvailable = 9;
+}
+
+message CreateToyResponse {
+  Status status = 1;
+  string errorMsg = 2;
+  Toy toy = 3;
+}
+
+message DeleteToyRequest {
+  int64 toy_id = 1;
+}
+
+message DeleteToyResponse {
+  Status status = 1;
+  string errorMsg = 2;
+}
+
+message ChangeToyRequest {
+  Toy toy = 1;
+}
+
+message ChangeToyResponse {
+  Status status = 1;
+  string errorMsg = 2;
+}
+
+message GetToyRequest {
+  int64 toy_id = 1;
+}
+
+message GetToyResponse {
+  Toy toy = 1;
+  Status status = 2;
+  string msg = 3;
+}
+
+message ListToyRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  int64 from = 3;
+  int64 to = 4;
+  string sort = 5;
+  repeated string sort_safe_list = 6;
+}
+
+message ListToyResponse {
+  repeated Toy toys = 1;
+  Status status = 2;
+  string errorMsg = 3;
+  Metadata metadata = 4;
+}
+
+message ListRecommendedRequest {}
+
+message ListRecommendedResponse {
+  repeated Toy toys = 1;
+  Status status = 2;
+  string errorMsg = 3;
+  Metadata metadata = 4;
+}
