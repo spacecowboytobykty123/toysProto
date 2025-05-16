@@ -204,6 +204,122 @@ func (x *Toy) GetIsAvailable() bool {
 	return false
 }
 
+type ToyUpdate struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title          *string                `protobuf:"bytes,2,opt,name=title,proto3,oneof" json:"title,omitempty"`
+	Desc           *string                `protobuf:"bytes,3,opt,name=desc,proto3,oneof" json:"desc,omitempty"`
+	Value          *int64                 `protobuf:"varint,4,opt,name=value,proto3,oneof" json:"value,omitempty"`
+	Images         []string               `protobuf:"bytes,5,rep,name=images,proto3" json:"images,omitempty"`
+	Skills         []string               `protobuf:"bytes,6,rep,name=skills,proto3" json:"skills,omitempty"`
+	Categories     []string               `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
+	RecommendedAge *string                `protobuf:"bytes,8,opt,name=recommended_age,json=recommendedAge,proto3,oneof" json:"recommended_age,omitempty"`
+	Manufacturer   *string                `protobuf:"bytes,9,opt,name=manufacturer,proto3,oneof" json:"manufacturer,omitempty"`
+	IsAvailable    *bool                  `protobuf:"varint,10,opt,name=isAvailable,proto3,oneof" json:"isAvailable,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ToyUpdate) Reset() {
+	*x = ToyUpdate{}
+	mi := &file_toys_toys_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ToyUpdate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ToyUpdate) ProtoMessage() {}
+
+func (x *ToyUpdate) ProtoReflect() protoreflect.Message {
+	mi := &file_toys_toys_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ToyUpdate.ProtoReflect.Descriptor instead.
+func (*ToyUpdate) Descriptor() ([]byte, []int) {
+	return file_toys_toys_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ToyUpdate) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ToyUpdate) GetTitle() string {
+	if x != nil && x.Title != nil {
+		return *x.Title
+	}
+	return ""
+}
+
+func (x *ToyUpdate) GetDesc() string {
+	if x != nil && x.Desc != nil {
+		return *x.Desc
+	}
+	return ""
+}
+
+func (x *ToyUpdate) GetValue() int64 {
+	if x != nil && x.Value != nil {
+		return *x.Value
+	}
+	return 0
+}
+
+func (x *ToyUpdate) GetImages() []string {
+	if x != nil {
+		return x.Images
+	}
+	return nil
+}
+
+func (x *ToyUpdate) GetSkills() []string {
+	if x != nil {
+		return x.Skills
+	}
+	return nil
+}
+
+func (x *ToyUpdate) GetCategories() []string {
+	if x != nil {
+		return x.Categories
+	}
+	return nil
+}
+
+func (x *ToyUpdate) GetRecommendedAge() string {
+	if x != nil && x.RecommendedAge != nil {
+		return *x.RecommendedAge
+	}
+	return ""
+}
+
+func (x *ToyUpdate) GetManufacturer() string {
+	if x != nil && x.Manufacturer != nil {
+		return *x.Manufacturer
+	}
+	return ""
+}
+
+func (x *ToyUpdate) GetIsAvailable() bool {
+	if x != nil && x.IsAvailable != nil {
+		return *x.IsAvailable
+	}
+	return false
+}
+
 type Metadata struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CurrentPage   int32                  `protobuf:"varint,1,opt,name=CurrentPage,proto3" json:"CurrentPage,omitempty"`
@@ -217,7 +333,7 @@ type Metadata struct {
 
 func (x *Metadata) Reset() {
 	*x = Metadata{}
-	mi := &file_toys_toys_proto_msgTypes[1]
+	mi := &file_toys_toys_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -229,7 +345,7 @@ func (x *Metadata) String() string {
 func (*Metadata) ProtoMessage() {}
 
 func (x *Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[1]
+	mi := &file_toys_toys_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -242,7 +358,7 @@ func (x *Metadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Metadata.ProtoReflect.Descriptor instead.
 func (*Metadata) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{1}
+	return file_toys_toys_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Metadata) GetCurrentPage() int32 {
@@ -297,7 +413,7 @@ type CreateToyRequest struct {
 
 func (x *CreateToyRequest) Reset() {
 	*x = CreateToyRequest{}
-	mi := &file_toys_toys_proto_msgTypes[2]
+	mi := &file_toys_toys_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -309,7 +425,7 @@ func (x *CreateToyRequest) String() string {
 func (*CreateToyRequest) ProtoMessage() {}
 
 func (x *CreateToyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[2]
+	mi := &file_toys_toys_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -322,7 +438,7 @@ func (x *CreateToyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateToyRequest.ProtoReflect.Descriptor instead.
 func (*CreateToyRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{2}
+	return file_toys_toys_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateToyRequest) GetTitle() string {
@@ -399,7 +515,7 @@ type CreateToyResponse struct {
 
 func (x *CreateToyResponse) Reset() {
 	*x = CreateToyResponse{}
-	mi := &file_toys_toys_proto_msgTypes[3]
+	mi := &file_toys_toys_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -411,7 +527,7 @@ func (x *CreateToyResponse) String() string {
 func (*CreateToyResponse) ProtoMessage() {}
 
 func (x *CreateToyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[3]
+	mi := &file_toys_toys_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -424,7 +540,7 @@ func (x *CreateToyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateToyResponse.ProtoReflect.Descriptor instead.
 func (*CreateToyResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{3}
+	return file_toys_toys_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateToyResponse) GetStatus() Status {
@@ -457,7 +573,7 @@ type DeleteToyRequest struct {
 
 func (x *DeleteToyRequest) Reset() {
 	*x = DeleteToyRequest{}
-	mi := &file_toys_toys_proto_msgTypes[4]
+	mi := &file_toys_toys_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -469,7 +585,7 @@ func (x *DeleteToyRequest) String() string {
 func (*DeleteToyRequest) ProtoMessage() {}
 
 func (x *DeleteToyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[4]
+	mi := &file_toys_toys_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +598,7 @@ func (x *DeleteToyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteToyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteToyRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{4}
+	return file_toys_toys_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteToyRequest) GetToyId() int64 {
@@ -502,7 +618,7 @@ type DeleteToyResponse struct {
 
 func (x *DeleteToyResponse) Reset() {
 	*x = DeleteToyResponse{}
-	mi := &file_toys_toys_proto_msgTypes[5]
+	mi := &file_toys_toys_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -514,7 +630,7 @@ func (x *DeleteToyResponse) String() string {
 func (*DeleteToyResponse) ProtoMessage() {}
 
 func (x *DeleteToyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[5]
+	mi := &file_toys_toys_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -527,7 +643,7 @@ func (x *DeleteToyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteToyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteToyResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{5}
+	return file_toys_toys_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteToyResponse) GetStatus() Status {
@@ -546,14 +662,14 @@ func (x *DeleteToyResponse) GetErrorMsg() string {
 
 type ChangeToyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Toy           *Toy                   `protobuf:"bytes,1,opt,name=toy,proto3" json:"toy,omitempty"`
+	Toy           *ToyUpdate             `protobuf:"bytes,1,opt,name=toy,proto3" json:"toy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeToyRequest) Reset() {
 	*x = ChangeToyRequest{}
-	mi := &file_toys_toys_proto_msgTypes[6]
+	mi := &file_toys_toys_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +681,7 @@ func (x *ChangeToyRequest) String() string {
 func (*ChangeToyRequest) ProtoMessage() {}
 
 func (x *ChangeToyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[6]
+	mi := &file_toys_toys_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,10 +694,10 @@ func (x *ChangeToyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeToyRequest.ProtoReflect.Descriptor instead.
 func (*ChangeToyRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{6}
+	return file_toys_toys_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ChangeToyRequest) GetToy() *Toy {
+func (x *ChangeToyRequest) GetToy() *ToyUpdate {
 	if x != nil {
 		return x.Toy
 	}
@@ -598,7 +714,7 @@ type ChangeToyResponse struct {
 
 func (x *ChangeToyResponse) Reset() {
 	*x = ChangeToyResponse{}
-	mi := &file_toys_toys_proto_msgTypes[7]
+	mi := &file_toys_toys_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -610,7 +726,7 @@ func (x *ChangeToyResponse) String() string {
 func (*ChangeToyResponse) ProtoMessage() {}
 
 func (x *ChangeToyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[7]
+	mi := &file_toys_toys_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -623,7 +739,7 @@ func (x *ChangeToyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeToyResponse.ProtoReflect.Descriptor instead.
 func (*ChangeToyResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{7}
+	return file_toys_toys_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ChangeToyResponse) GetStatus() Status {
@@ -649,7 +765,7 @@ type GetToyRequest struct {
 
 func (x *GetToyRequest) Reset() {
 	*x = GetToyRequest{}
-	mi := &file_toys_toys_proto_msgTypes[8]
+	mi := &file_toys_toys_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +777,7 @@ func (x *GetToyRequest) String() string {
 func (*GetToyRequest) ProtoMessage() {}
 
 func (x *GetToyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[8]
+	mi := &file_toys_toys_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +790,7 @@ func (x *GetToyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetToyRequest.ProtoReflect.Descriptor instead.
 func (*GetToyRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{8}
+	return file_toys_toys_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetToyRequest) GetToyId() int64 {
@@ -695,7 +811,7 @@ type GetToyResponse struct {
 
 func (x *GetToyResponse) Reset() {
 	*x = GetToyResponse{}
-	mi := &file_toys_toys_proto_msgTypes[9]
+	mi := &file_toys_toys_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -707,7 +823,7 @@ func (x *GetToyResponse) String() string {
 func (*GetToyResponse) ProtoMessage() {}
 
 func (x *GetToyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[9]
+	mi := &file_toys_toys_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +836,7 @@ func (x *GetToyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetToyResponse.ProtoReflect.Descriptor instead.
 func (*GetToyResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{9}
+	return file_toys_toys_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetToyResponse) GetToy() *Toy {
@@ -758,7 +874,7 @@ type ListToyRequest struct {
 
 func (x *ListToyRequest) Reset() {
 	*x = ListToyRequest{}
-	mi := &file_toys_toys_proto_msgTypes[10]
+	mi := &file_toys_toys_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -770,7 +886,7 @@ func (x *ListToyRequest) String() string {
 func (*ListToyRequest) ProtoMessage() {}
 
 func (x *ListToyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[10]
+	mi := &file_toys_toys_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -783,7 +899,7 @@ func (x *ListToyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListToyRequest.ProtoReflect.Descriptor instead.
 func (*ListToyRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{10}
+	return file_toys_toys_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListToyRequest) GetPage() int32 {
@@ -840,7 +956,7 @@ type ListToyResponse struct {
 
 func (x *ListToyResponse) Reset() {
 	*x = ListToyResponse{}
-	mi := &file_toys_toys_proto_msgTypes[11]
+	mi := &file_toys_toys_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -852,7 +968,7 @@ func (x *ListToyResponse) String() string {
 func (*ListToyResponse) ProtoMessage() {}
 
 func (x *ListToyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[11]
+	mi := &file_toys_toys_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -865,7 +981,7 @@ func (x *ListToyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListToyResponse.ProtoReflect.Descriptor instead.
 func (*ListToyResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{11}
+	return file_toys_toys_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListToyResponse) GetToys() []*Toy {
@@ -904,7 +1020,7 @@ type ListRecommendedRequest struct {
 
 func (x *ListRecommendedRequest) Reset() {
 	*x = ListRecommendedRequest{}
-	mi := &file_toys_toys_proto_msgTypes[12]
+	mi := &file_toys_toys_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -916,7 +1032,7 @@ func (x *ListRecommendedRequest) String() string {
 func (*ListRecommendedRequest) ProtoMessage() {}
 
 func (x *ListRecommendedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[12]
+	mi := &file_toys_toys_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -929,7 +1045,7 @@ func (x *ListRecommendedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRecommendedRequest.ProtoReflect.Descriptor instead.
 func (*ListRecommendedRequest) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{12}
+	return file_toys_toys_proto_rawDescGZIP(), []int{13}
 }
 
 type ListRecommendedResponse struct {
@@ -944,7 +1060,7 @@ type ListRecommendedResponse struct {
 
 func (x *ListRecommendedResponse) Reset() {
 	*x = ListRecommendedResponse{}
-	mi := &file_toys_toys_proto_msgTypes[13]
+	mi := &file_toys_toys_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -956,7 +1072,7 @@ func (x *ListRecommendedResponse) String() string {
 func (*ListRecommendedResponse) ProtoMessage() {}
 
 func (x *ListRecommendedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_toys_toys_proto_msgTypes[13]
+	mi := &file_toys_toys_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -969,7 +1085,7 @@ func (x *ListRecommendedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRecommendedResponse.ProtoReflect.Descriptor instead.
 func (*ListRecommendedResponse) Descriptor() ([]byte, []int) {
-	return file_toys_toys_proto_rawDescGZIP(), []int{13}
+	return file_toys_toys_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListRecommendedResponse) GetToys() []*Toy {
@@ -1018,7 +1134,27 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x0frecommended_age\x18\b \x01(\tR\x0erecommendedAge\x12\"\n" +
 	"\fmanufacturer\x18\t \x01(\tR\fmanufacturer\x12 \n" +
 	"\visAvailable\x18\n" +
-	" \x01(\bR\visAvailable\"\xa6\x01\n" +
+	" \x01(\bR\visAvailable\"\x8a\x03\n" +
+	"\tToyUpdate\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
+	"\x05title\x18\x02 \x01(\tH\x00R\x05title\x88\x01\x01\x12\x17\n" +
+	"\x04desc\x18\x03 \x01(\tH\x01R\x04desc\x88\x01\x01\x12\x19\n" +
+	"\x05value\x18\x04 \x01(\x03H\x02R\x05value\x88\x01\x01\x12\x16\n" +
+	"\x06images\x18\x05 \x03(\tR\x06images\x12\x16\n" +
+	"\x06skills\x18\x06 \x03(\tR\x06skills\x12\x1e\n" +
+	"\n" +
+	"categories\x18\a \x03(\tR\n" +
+	"categories\x12,\n" +
+	"\x0frecommended_age\x18\b \x01(\tH\x03R\x0erecommendedAge\x88\x01\x01\x12'\n" +
+	"\fmanufacturer\x18\t \x01(\tH\x04R\fmanufacturer\x88\x01\x01\x12%\n" +
+	"\visAvailable\x18\n" +
+	" \x01(\bH\x05R\visAvailable\x88\x01\x01B\b\n" +
+	"\x06_titleB\a\n" +
+	"\x05_descB\b\n" +
+	"\x06_valueB\x12\n" +
+	"\x10_recommended_ageB\x0f\n" +
+	"\r_manufacturerB\x0e\n" +
+	"\f_isAvailable\"\xa6\x01\n" +
 	"\bMetadata\x12 \n" +
 	"\vCurrentPage\x18\x01 \x01(\x05R\vCurrentPage\x12\x1a\n" +
 	"\bPageSize\x18\x02 \x01(\x05R\bPageSize\x12\x1c\n" +
@@ -1045,9 +1181,9 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x06toy_id\x18\x01 \x01(\x03R\x05toyId\"U\n" +
 	"\x11DeleteToyResponse\x12$\n" +
 	"\x06status\x18\x01 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +
-	"\berrorMsg\x18\x02 \x01(\tR\berrorMsg\"/\n" +
-	"\x10ChangeToyRequest\x12\x1b\n" +
-	"\x03toy\x18\x01 \x01(\v2\t.toys.ToyR\x03toy\"U\n" +
+	"\berrorMsg\x18\x02 \x01(\tR\berrorMsg\"5\n" +
+	"\x10ChangeToyRequest\x12!\n" +
+	"\x03toy\x18\x01 \x01(\v2\x0f.toys.ToyUpdateR\x03toy\"U\n" +
 	"\x11ChangeToyResponse\x12$\n" +
 	"\x06status\x18\x01 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +
 	"\berrorMsg\x18\x02 \x01(\tR\berrorMsg\"&\n" +
@@ -1106,50 +1242,51 @@ func file_toys_toys_proto_rawDescGZIP() []byte {
 }
 
 var file_toys_toys_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_toys_toys_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_toys_toys_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_toys_toys_proto_goTypes = []any{
 	(Status)(0),                     // 0: toys.Status
 	(*Toy)(nil),                     // 1: toys.Toy
-	(*Metadata)(nil),                // 2: toys.Metadata
-	(*CreateToyRequest)(nil),        // 3: toys.CreateToyRequest
-	(*CreateToyResponse)(nil),       // 4: toys.CreateToyResponse
-	(*DeleteToyRequest)(nil),        // 5: toys.DeleteToyRequest
-	(*DeleteToyResponse)(nil),       // 6: toys.DeleteToyResponse
-	(*ChangeToyRequest)(nil),        // 7: toys.ChangeToyRequest
-	(*ChangeToyResponse)(nil),       // 8: toys.ChangeToyResponse
-	(*GetToyRequest)(nil),           // 9: toys.GetToyRequest
-	(*GetToyResponse)(nil),          // 10: toys.GetToyResponse
-	(*ListToyRequest)(nil),          // 11: toys.ListToyRequest
-	(*ListToyResponse)(nil),         // 12: toys.ListToyResponse
-	(*ListRecommendedRequest)(nil),  // 13: toys.ListRecommendedRequest
-	(*ListRecommendedResponse)(nil), // 14: toys.ListRecommendedResponse
+	(*ToyUpdate)(nil),               // 2: toys.ToyUpdate
+	(*Metadata)(nil),                // 3: toys.Metadata
+	(*CreateToyRequest)(nil),        // 4: toys.CreateToyRequest
+	(*CreateToyResponse)(nil),       // 5: toys.CreateToyResponse
+	(*DeleteToyRequest)(nil),        // 6: toys.DeleteToyRequest
+	(*DeleteToyResponse)(nil),       // 7: toys.DeleteToyResponse
+	(*ChangeToyRequest)(nil),        // 8: toys.ChangeToyRequest
+	(*ChangeToyResponse)(nil),       // 9: toys.ChangeToyResponse
+	(*GetToyRequest)(nil),           // 10: toys.GetToyRequest
+	(*GetToyResponse)(nil),          // 11: toys.GetToyResponse
+	(*ListToyRequest)(nil),          // 12: toys.ListToyRequest
+	(*ListToyResponse)(nil),         // 13: toys.ListToyResponse
+	(*ListRecommendedRequest)(nil),  // 14: toys.ListRecommendedRequest
+	(*ListRecommendedResponse)(nil), // 15: toys.ListRecommendedResponse
 }
 var file_toys_toys_proto_depIdxs = []int32{
 	0,  // 0: toys.CreateToyResponse.status:type_name -> toys.Status
 	1,  // 1: toys.CreateToyResponse.toy:type_name -> toys.Toy
 	0,  // 2: toys.DeleteToyResponse.status:type_name -> toys.Status
-	1,  // 3: toys.ChangeToyRequest.toy:type_name -> toys.Toy
+	2,  // 3: toys.ChangeToyRequest.toy:type_name -> toys.ToyUpdate
 	0,  // 4: toys.ChangeToyResponse.status:type_name -> toys.Status
 	1,  // 5: toys.GetToyResponse.toy:type_name -> toys.Toy
 	0,  // 6: toys.GetToyResponse.status:type_name -> toys.Status
 	1,  // 7: toys.ListToyResponse.toys:type_name -> toys.Toy
 	0,  // 8: toys.ListToyResponse.status:type_name -> toys.Status
-	2,  // 9: toys.ListToyResponse.metadata:type_name -> toys.Metadata
+	3,  // 9: toys.ListToyResponse.metadata:type_name -> toys.Metadata
 	1,  // 10: toys.ListRecommendedResponse.toys:type_name -> toys.Toy
 	0,  // 11: toys.ListRecommendedResponse.status:type_name -> toys.Status
-	2,  // 12: toys.ListRecommendedResponse.metadata:type_name -> toys.Metadata
-	3,  // 13: toys.Toys.CreateToy:input_type -> toys.CreateToyRequest
-	5,  // 14: toys.Toys.DeleteToy:input_type -> toys.DeleteToyRequest
-	7,  // 15: toys.Toys.ChangeToy:input_type -> toys.ChangeToyRequest
-	9,  // 16: toys.Toys.GetToy:input_type -> toys.GetToyRequest
-	11, // 17: toys.Toys.ListToy:input_type -> toys.ListToyRequest
-	13, // 18: toys.Toys.ListRecommended:input_type -> toys.ListRecommendedRequest
-	4,  // 19: toys.Toys.CreateToy:output_type -> toys.CreateToyResponse
-	6,  // 20: toys.Toys.DeleteToy:output_type -> toys.DeleteToyResponse
-	8,  // 21: toys.Toys.ChangeToy:output_type -> toys.ChangeToyResponse
-	10, // 22: toys.Toys.GetToy:output_type -> toys.GetToyResponse
-	12, // 23: toys.Toys.ListToy:output_type -> toys.ListToyResponse
-	14, // 24: toys.Toys.ListRecommended:output_type -> toys.ListRecommendedResponse
+	3,  // 12: toys.ListRecommendedResponse.metadata:type_name -> toys.Metadata
+	4,  // 13: toys.Toys.CreateToy:input_type -> toys.CreateToyRequest
+	6,  // 14: toys.Toys.DeleteToy:input_type -> toys.DeleteToyRequest
+	8,  // 15: toys.Toys.ChangeToy:input_type -> toys.ChangeToyRequest
+	10, // 16: toys.Toys.GetToy:input_type -> toys.GetToyRequest
+	12, // 17: toys.Toys.ListToy:input_type -> toys.ListToyRequest
+	14, // 18: toys.Toys.ListRecommended:input_type -> toys.ListRecommendedRequest
+	5,  // 19: toys.Toys.CreateToy:output_type -> toys.CreateToyResponse
+	7,  // 20: toys.Toys.DeleteToy:output_type -> toys.DeleteToyResponse
+	9,  // 21: toys.Toys.ChangeToy:output_type -> toys.ChangeToyResponse
+	11, // 22: toys.Toys.GetToy:output_type -> toys.GetToyResponse
+	13, // 23: toys.Toys.ListToy:output_type -> toys.ListToyResponse
+	15, // 24: toys.Toys.ListRecommended:output_type -> toys.ListRecommendedResponse
 	19, // [19:25] is the sub-list for method output_type
 	13, // [13:19] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
@@ -1162,13 +1299,14 @@ func file_toys_toys_proto_init() {
 	if File_toys_toys_proto != nil {
 		return
 	}
+	file_toys_toys_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_toys_toys_proto_rawDesc), len(file_toys_toys_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   14,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

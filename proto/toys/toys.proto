@@ -38,6 +38,19 @@ message Toy {
   bool isAvailable = 10;
 }
 
+message ToyUpdate {
+  int64 id = 1;
+  optional string title = 2;
+  optional string desc = 3;
+  optional int64 value = 4;
+  repeated string images = 5;
+  repeated string skills = 6;
+  repeated string categories = 7;
+  optional string recommended_age = 8;
+  optional string manufacturer = 9;
+  optional bool isAvailable = 10;
+}
+
 message Metadata {
   int32 CurrentPage = 1;
   int32 PageSize = 2;
@@ -75,7 +88,7 @@ message DeleteToyResponse {
 }
 
 message ChangeToyRequest {
-  Toy toy = 1;
+  ToyUpdate toy = 1;
 }
 
 message ChangeToyResponse {
