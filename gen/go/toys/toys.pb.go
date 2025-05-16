@@ -868,6 +868,8 @@ type ListToyRequest struct {
 	To            int64                  `protobuf:"varint,4,opt,name=to,proto3" json:"to,omitempty"`
 	Sort          string                 `protobuf:"bytes,5,opt,name=sort,proto3" json:"sort,omitempty"`
 	SortSafeList  []string               `protobuf:"bytes,6,rep,name=sort_safe_list,json=sortSafeList,proto3" json:"sort_safe_list,omitempty"`
+	Categories    []string               `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
+	Skills        []string               `protobuf:"bytes,8,rep,name=skills,proto3" json:"skills,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -940,6 +942,20 @@ func (x *ListToyRequest) GetSort() string {
 func (x *ListToyRequest) GetSortSafeList() []string {
 	if x != nil {
 		return x.SortSafeList
+	}
+	return nil
+}
+
+func (x *ListToyRequest) GetCategories() []string {
+	if x != nil {
+		return x.Categories
+	}
+	return nil
+}
+
+func (x *ListToyRequest) GetSkills() []string {
+	if x != nil {
+		return x.Skills
 	}
 	return nil
 }
@@ -1192,14 +1208,18 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x0eGetToyResponse\x12\x1b\n" +
 	"\x03toy\x18\x01 \x01(\v2\t.toys.ToyR\x03toy\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x10\n" +
-	"\x03msg\x18\x03 \x01(\tR\x03msg\"\x9f\x01\n" +
+	"\x03msg\x18\x03 \x01(\tR\x03msg\"\xd7\x01\n" +
 	"\x0eListToyRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x12\n" +
 	"\x04from\x18\x03 \x01(\x03R\x04from\x12\x0e\n" +
 	"\x02to\x18\x04 \x01(\x03R\x02to\x12\x12\n" +
 	"\x04sort\x18\x05 \x01(\tR\x04sort\x12$\n" +
-	"\x0esort_safe_list\x18\x06 \x03(\tR\fsortSafeList\"\x9e\x01\n" +
+	"\x0esort_safe_list\x18\x06 \x03(\tR\fsortSafeList\x12\x1e\n" +
+	"\n" +
+	"categories\x18\a \x03(\tR\n" +
+	"categories\x12\x16\n" +
+	"\x06skills\x18\b \x03(\tR\x06skills\"\x9e\x01\n" +
 	"\x0fListToyResponse\x12\x1d\n" +
 	"\x04toys\x18\x01 \x03(\v2\t.toys.ToyR\x04toys\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +

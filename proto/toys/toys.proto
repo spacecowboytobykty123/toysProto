@@ -113,6 +113,8 @@ message ListToyRequest {
   int64 to = 4;
   string sort = 5;
   repeated string sort_safe_list = 6;
+  repeated string categories = 7;
+  repeated string skills = 8;
 }
 
 message ListToyResponse {
