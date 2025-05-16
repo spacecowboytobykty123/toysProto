@@ -32,6 +32,7 @@ const (
 	Status_STATUS_INVALID_CATEGORIES   Status = 5
 	Status_STATUS_INVALID_RECAGE       Status = 6
 	Status_STATUS_INVALID_MANUFACTURER Status = 7
+	Status_STATUS_INTERNAL_ERROR       Status = 8
 )
 
 // Enum value maps for Status.
@@ -45,6 +46,7 @@ var (
 		5: "STATUS_INVALID_CATEGORIES",
 		6: "STATUS_INVALID_RECAGE",
 		7: "STATUS_INVALID_MANUFACTURER",
+		8: "STATUS_INTERNAL_ERROR",
 	}
 	Status_value = map[string]int32{
 		"STATUS_OK":                   0,
@@ -55,6 +57,7 @@ var (
 		"STATUS_INVALID_CATEGORIES":   5,
 		"STATUS_INVALID_RECAGE":       6,
 		"STATUS_INVALID_MANUFACTURER": 7,
+		"STATUS_INTERNAL_ERROR":       8,
 	}
 )
 
@@ -1071,7 +1074,7 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x04toys\x18\x01 \x03(\v2\t.toys.ToyR\x04toys\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +
 	"\berrorMsg\x18\x03 \x01(\tR\berrorMsg\x12*\n" +
-	"\bmetadata\x18\x04 \x01(\v2\x0e.toys.MetadataR\bmetadata*\xda\x01\n" +
+	"\bmetadata\x18\x04 \x01(\v2\x0e.toys.MetadataR\bmetadata*\xf5\x01\n" +
 	"\x06Status\x12\r\n" +
 	"\tSTATUS_OK\x10\x00\x12\x18\n" +
 	"\x14STATUS_INVALID_TITLE\x10\x01\x12\x17\n" +
@@ -1080,7 +1083,8 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x15STATUS_INVALID_IMAGES\x10\x04\x12\x1d\n" +
 	"\x19STATUS_INVALID_CATEGORIES\x10\x05\x12\x19\n" +
 	"\x15STATUS_INVALID_RECAGE\x10\x06\x12\x1f\n" +
-	"\x1bSTATUS_INVALID_MANUFACTURER\x10\a2\xfd\x02\n" +
+	"\x1bSTATUS_INVALID_MANUFACTURER\x10\a\x12\x19\n" +
+	"\x15STATUS_INTERNAL_ERROR\x10\b2\xfd\x02\n" +
 	"\x04Toys\x12<\n" +
 	"\tCreateToy\x12\x16.toys.CreateToyRequest\x1a\x17.toys.CreateToyResponse\x12<\n" +
 	"\tDeleteToy\x12\x16.toys.DeleteToyRequest\x1a\x17.toys.DeleteToyResponse\x12<\n" +
