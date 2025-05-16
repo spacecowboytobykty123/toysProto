@@ -870,6 +870,7 @@ type ListToyRequest struct {
 	SortSafeList  []string               `protobuf:"bytes,6,rep,name=sort_safe_list,json=sortSafeList,proto3" json:"sort_safe_list,omitempty"`
 	Categories    []string               `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
 	Skills        []string               `protobuf:"bytes,8,rep,name=skills,proto3" json:"skills,omitempty"`
+	Title         string                 `protobuf:"bytes,9,opt,name=title,proto3" json:"title,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -958,6 +959,13 @@ func (x *ListToyRequest) GetSkills() []string {
 		return x.Skills
 	}
 	return nil
+}
+
+func (x *ListToyRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
 }
 
 type ListToyResponse struct {
@@ -1208,7 +1216,7 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x0eGetToyResponse\x12\x1b\n" +
 	"\x03toy\x18\x01 \x01(\v2\t.toys.ToyR\x03toy\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x10\n" +
-	"\x03msg\x18\x03 \x01(\tR\x03msg\"\xd7\x01\n" +
+	"\x03msg\x18\x03 \x01(\tR\x03msg\"\xed\x01\n" +
 	"\x0eListToyRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x12\n" +
@@ -1219,7 +1227,8 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\n" +
 	"categories\x18\a \x03(\tR\n" +
 	"categories\x12\x16\n" +
-	"\x06skills\x18\b \x03(\tR\x06skills\"\x9e\x01\n" +
+	"\x06skills\x18\b \x03(\tR\x06skills\x12\x14\n" +
+	"\x05title\x18\t \x01(\tR\x05title\"\x9e\x01\n" +
 	"\x0fListToyResponse\x12\x1d\n" +
 	"\x04toys\x18\x01 \x03(\v2\t.toys.ToyR\x04toys\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +

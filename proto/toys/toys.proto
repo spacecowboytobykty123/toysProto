@@ -115,6 +115,7 @@ message ListToyRequest {
   repeated string sort_safe_list = 6;
   repeated string categories = 7;
   repeated string skills = 8;
+  string title = 9;
 }
 
 message ListToyResponse {
