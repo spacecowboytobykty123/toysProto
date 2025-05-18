@@ -8,6 +8,7 @@ service Toys {
   rpc CreateToy (CreateToyRequest) returns (CreateToyResponse);
   rpc DeleteToy (DeleteToyRequest) returns (DeleteToyResponse);
   rpc ChangeToy (ChangeToyRequest) returns (ChangeToyResponse);
+  rpc GetToysByIds (GetToysByIdsRequest) returns (GetToysByIdsResponse);
   rpc GetToy (GetToyRequest) returns (GetToyResponse);
   rpc ListToy (ListToyRequest) returns (ListToyResponse);
   rpc ListRecommended (ListRecommendedRequest) returns (ListRecommendedResponse);
@@ -36,6 +37,12 @@ message Toy {
   string recommended_age = 8;
   string manufacturer = 9;
   bool isAvailable = 10;
+}
+
+message ToySummary {
+  int64 id = 1;
+  string title = 2;
+  int64 value = 3;
 }
 
 message ToyUpdate {
@@ -104,6 +111,15 @@ message GetToyResponse {
   Toy toy = 1;
   Status status = 2;
   string msg = 3;
+}
+
+message GetToysByIdsRequest {
+  repeated int64 id = 1;
+}
+
+message GetToysByIdsResponse {
+  repeated ToySummary toy = 1;
+  string msg = 2;
 }
 
 message ListToyRequest {

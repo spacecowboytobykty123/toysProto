@@ -22,6 +22,7 @@ const (
 	Toys_CreateToy_FullMethodName       = "/toys.Toys/CreateToy"
 	Toys_DeleteToy_FullMethodName       = "/toys.Toys/DeleteToy"
 	Toys_ChangeToy_FullMethodName       = "/toys.Toys/ChangeToy"
+	Toys_GetToysByIds_FullMethodName    = "/toys.Toys/GetToysByIds"
 	Toys_GetToy_FullMethodName          = "/toys.Toys/GetToy"
 	Toys_ListToy_FullMethodName         = "/toys.Toys/ListToy"
 	Toys_ListRecommended_FullMethodName = "/toys.Toys/ListRecommended"
@@ -34,6 +35,7 @@ type ToysClient interface {
 	CreateToy(ctx context.Context, in *CreateToyRequest, opts ...grpc.CallOption) (*CreateToyResponse, error)
 	DeleteToy(ctx context.Context, in *DeleteToyRequest, opts ...grpc.CallOption) (*DeleteToyResponse, error)
 	ChangeToy(ctx context.Context, in *ChangeToyRequest, opts ...grpc.CallOption) (*ChangeToyResponse, error)
+	GetToysByIds(ctx context.Context, in *GetToysByIdsRequest, opts ...grpc.CallOption) (*GetToysByIdsResponse, error)
 	GetToy(ctx context.Context, in *GetToyRequest, opts ...grpc.CallOption) (*GetToyResponse, error)
 	ListToy(ctx context.Context, in *ListToyRequest, opts ...grpc.CallOption) (*ListToyResponse, error)
 	ListRecommended(ctx context.Context, in *ListRecommendedRequest, opts ...grpc.CallOption) (*ListRecommendedResponse, error)
@@ -77,6 +79,16 @@ func (c *toysClient) ChangeToy(ctx context.Context, in *ChangeToyRequest, opts .
 	return out, nil
 }
 
+func (c *toysClient) GetToysByIds(ctx context.Context, in *GetToysByIdsRequest, opts ...grpc.CallOption) (*GetToysByIdsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetToysByIdsResponse)
+	err := c.cc.Invoke(ctx, Toys_GetToysByIds_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *toysClient) GetToy(ctx context.Context, in *GetToyRequest, opts ...grpc.CallOption) (*GetToyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetToyResponse)
@@ -114,6 +126,7 @@ type ToysServer interface {
 	CreateToy(context.Context, *CreateToyRequest) (*CreateToyResponse, error)
 	DeleteToy(context.Context, *DeleteToyRequest) (*DeleteToyResponse, error)
 	ChangeToy(context.Context, *ChangeToyRequest) (*ChangeToyResponse, error)
+	GetToysByIds(context.Context, *GetToysByIdsRequest) (*GetToysByIdsResponse, error)
 	GetToy(context.Context, *GetToyRequest) (*GetToyResponse, error)
 	ListToy(context.Context, *ListToyRequest) (*ListToyResponse, error)
 	ListRecommended(context.Context, *ListRecommendedRequest) (*ListRecommendedResponse, error)
@@ -135,6 +148,9 @@ func (UnimplementedToysServer) DeleteToy(context.Context, *DeleteToyRequest) (*D
 }
 func (UnimplementedToysServer) ChangeToy(context.Context, *ChangeToyRequest) (*ChangeToyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeToy not implemented")
+}
+func (UnimplementedToysServer) GetToysByIds(context.Context, *GetToysByIdsRequest) (*GetToysByIdsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetToysByIds not implemented")
 }
 func (UnimplementedToysServer) GetToy(context.Context, *GetToyRequest) (*GetToyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetToy not implemented")
@@ -220,6 +236,24 @@ func _Toys_ChangeToy_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Toys_GetToysByIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetToysByIdsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ToysServer).GetToysByIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Toys_GetToysByIds_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ToysServer).GetToysByIds(ctx, req.(*GetToysByIdsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Toys_GetToy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetToyRequest)
 	if err := dec(in); err != nil {
@@ -292,6 +326,10 @@ var Toys_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangeToy",
 			Handler:    _Toys_ChangeToy_Handler,
+		},
+		{
+			MethodName: "GetToysByIds",
+			Handler:    _Toys_GetToysByIds_Handler,
 		},
 		{
 			MethodName: "GetToy",
