@@ -210,6 +210,7 @@ type ToySummary struct {
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Value         int64                  `protobuf:"varint,3,opt,name=value,proto3" json:"value,omitempty"`
+	ImageUrl      string                 `protobuf:"bytes,4,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -263,6 +264,13 @@ func (x *ToySummary) GetValue() int64 {
 		return x.Value
 	}
 	return 0
+}
+
+func (x *ToySummary) GetImageUrl() string {
+	if x != nil {
+		return x.ImageUrl
+	}
+	return ""
 }
 
 type ToyUpdate struct {
@@ -1315,12 +1323,13 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x0frecommended_age\x18\b \x01(\tR\x0erecommendedAge\x12\"\n" +
 	"\fmanufacturer\x18\t \x01(\tR\fmanufacturer\x12 \n" +
 	"\visAvailable\x18\n" +
-	" \x01(\bR\visAvailable\"H\n" +
+	" \x01(\bR\visAvailable\"e\n" +
 	"\n" +
 	"ToySummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
-	"\x05value\x18\x03 \x01(\x03R\x05value\"\x8a\x03\n" +
+	"\x05value\x18\x03 \x01(\x03R\x05value\x12\x1b\n" +
+	"\timage_url\x18\x04 \x01(\tR\bimageUrl\"\x8a\x03\n" +
 	"\tToyUpdate\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\x05title\x18\x02 \x01(\tH\x00R\x05title\x88\x01\x01\x12\x17\n" +

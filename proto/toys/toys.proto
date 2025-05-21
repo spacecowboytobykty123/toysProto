@@ -82,6 +82,7 @@ message ToySummary {
   int64 id = 1;
   string title = 2;
   int64 value = 3;
+  string image_url = 4;
 }
 
 message ToyUpdate {
