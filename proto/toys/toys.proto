@@ -161,15 +161,15 @@ message GetToysByIdsResponse {
 }
 
 message ListToyRequest {
-  int32 page = 1;
-  int32 page_size = 2;
-  int64 from = 3;
-  int64 to = 4;
-  string sort = 5;
+  optional int32 page = 1;
+  optional int32 page_size = 2;
+  optional int64 from = 3;
+  optional int64 to = 4;
+  optional string sort = 5;
   repeated string sort_safe_list = 6;
   repeated string categories = 7;
   repeated string skills = 8;
-  string title = 9;
+  optional string title = 9;
 }
 
 message ListToyResponse {

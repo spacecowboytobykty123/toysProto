@@ -1019,15 +1019,15 @@ func (x *GetToysByIdsResponse) GetMsg() string {
 
 type ListToyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
-	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	From          int64                  `protobuf:"varint,3,opt,name=from,proto3" json:"from,omitempty"`
-	To            int64                  `protobuf:"varint,4,opt,name=to,proto3" json:"to,omitempty"`
-	Sort          string                 `protobuf:"bytes,5,opt,name=sort,proto3" json:"sort,omitempty"`
+	Page          *int32                 `protobuf:"varint,1,opt,name=page,proto3,oneof" json:"page,omitempty"`
+	PageSize      *int32                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3,oneof" json:"page_size,omitempty"`
+	From          *int64                 `protobuf:"varint,3,opt,name=from,proto3,oneof" json:"from,omitempty"`
+	To            *int64                 `protobuf:"varint,4,opt,name=to,proto3,oneof" json:"to,omitempty"`
+	Sort          *string                `protobuf:"bytes,5,opt,name=sort,proto3,oneof" json:"sort,omitempty"`
 	SortSafeList  []string               `protobuf:"bytes,6,rep,name=sort_safe_list,json=sortSafeList,proto3" json:"sort_safe_list,omitempty"`
 	Categories    []string               `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
 	Skills        []string               `protobuf:"bytes,8,rep,name=skills,proto3" json:"skills,omitempty"`
-	Title         string                 `protobuf:"bytes,9,opt,name=title,proto3" json:"title,omitempty"`
+	Title         *string                `protobuf:"bytes,9,opt,name=title,proto3,oneof" json:"title,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1063,36 +1063,36 @@ func (*ListToyRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *ListToyRequest) GetPage() int32 {
-	if x != nil {
-		return x.Page
+	if x != nil && x.Page != nil {
+		return *x.Page
 	}
 	return 0
 }
 
 func (x *ListToyRequest) GetPageSize() int32 {
-	if x != nil {
-		return x.PageSize
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
 	}
 	return 0
 }
 
 func (x *ListToyRequest) GetFrom() int64 {
-	if x != nil {
-		return x.From
+	if x != nil && x.From != nil {
+		return *x.From
 	}
 	return 0
 }
 
 func (x *ListToyRequest) GetTo() int64 {
-	if x != nil {
-		return x.To
+	if x != nil && x.To != nil {
+		return *x.To
 	}
 	return 0
 }
 
 func (x *ListToyRequest) GetSort() string {
-	if x != nil {
-		return x.Sort
+	if x != nil && x.Sort != nil {
+		return *x.Sort
 	}
 	return ""
 }
@@ -1119,8 +1119,8 @@ func (x *ListToyRequest) GetSkills() []string {
 }
 
 func (x *ListToyRequest) GetTitle() string {
-	if x != nil {
-		return x.Title
+	if x != nil && x.Title != nil {
+		return *x.Title
 	}
 	return ""
 }
@@ -1383,19 +1383,26 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x03(\x03R\x02id\"L\n" +
 	"\x14GetToysByIdsResponse\x12\"\n" +
 	"\x03toy\x18\x01 \x03(\v2\x10.toys.ToySummaryR\x03toy\x12\x10\n" +
-	"\x03msg\x18\x02 \x01(\tR\x03msg\"\xed\x01\n" +
-	"\x0eListToyRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x12\n" +
-	"\x04from\x18\x03 \x01(\x03R\x04from\x12\x0e\n" +
-	"\x02to\x18\x04 \x01(\x03R\x02to\x12\x12\n" +
-	"\x04sort\x18\x05 \x01(\tR\x04sort\x12$\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\"\xc5\x02\n" +
+	"\x0eListToyRequest\x12\x17\n" +
+	"\x04page\x18\x01 \x01(\x05H\x00R\x04page\x88\x01\x01\x12 \n" +
+	"\tpage_size\x18\x02 \x01(\x05H\x01R\bpageSize\x88\x01\x01\x12\x17\n" +
+	"\x04from\x18\x03 \x01(\x03H\x02R\x04from\x88\x01\x01\x12\x13\n" +
+	"\x02to\x18\x04 \x01(\x03H\x03R\x02to\x88\x01\x01\x12\x17\n" +
+	"\x04sort\x18\x05 \x01(\tH\x04R\x04sort\x88\x01\x01\x12$\n" +
 	"\x0esort_safe_list\x18\x06 \x03(\tR\fsortSafeList\x12\x1e\n" +
 	"\n" +
 	"categories\x18\a \x03(\tR\n" +
 	"categories\x12\x16\n" +
-	"\x06skills\x18\b \x03(\tR\x06skills\x12\x14\n" +
-	"\x05title\x18\t \x01(\tR\x05title\"\x9e\x01\n" +
+	"\x06skills\x18\b \x03(\tR\x06skills\x12\x19\n" +
+	"\x05title\x18\t \x01(\tH\x05R\x05title\x88\x01\x01B\a\n" +
+	"\x05_pageB\f\n" +
+	"\n" +
+	"_page_sizeB\a\n" +
+	"\x05_fromB\x05\n" +
+	"\x03_toB\a\n" +
+	"\x05_sortB\b\n" +
+	"\x06_title\"\x9e\x01\n" +
 	"\x0fListToyResponse\x12\x1d\n" +
 	"\x04toys\x18\x01 \x03(\v2\t.toys.ToyR\x04toys\x12$\n" +
 	"\x06status\x18\x02 \x01(\x0e2\f.toys.StatusR\x06status\x12\x1a\n" +
@@ -1504,6 +1511,7 @@ func file_toys_toys_proto_init() {
 		return
 	}
 	file_toys_toys_proto_msgTypes[2].OneofWrappers = []any{}
+	file_toys_toys_proto_msgTypes[14].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
