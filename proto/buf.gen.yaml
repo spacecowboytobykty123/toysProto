@@ -1,0 +1,13 @@
+version: v1
+plugins:
+  - plugin: go
+    out: C:\Users\Еркебулан\GolandProjects\toysProto\gen\go
+    opt: paths=source_relative
+
+  - plugin: go-grpc
+    out: C:\Users\Еркебулан\GolandProjects\toysProto\gen\go
+    opt: paths=source_relative
+
+  - plugin: grpc-gateway
+    out: C:\Users\Еркебулан\GolandProjects\toysProto\gen\go
+    opt: paths=source_relative

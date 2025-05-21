@@ -4,14 +4,53 @@ package toys;
 
 option go_package = "Stoys.v1;toys";
 
+import "google/api/annotations.proto";
+
 service Toys {
-  rpc CreateToy (CreateToyRequest) returns (CreateToyResponse);
-  rpc DeleteToy (DeleteToyRequest) returns (DeleteToyResponse);
-  rpc ChangeToy (ChangeToyRequest) returns (ChangeToyResponse);
-  rpc GetToysByIds (GetToysByIdsRequest) returns (GetToysByIdsResponse);
-  rpc GetToy (GetToyRequest) returns (GetToyResponse);
-  rpc ListToy (ListToyRequest) returns (ListToyResponse);
-  rpc ListRecommended (ListRecommendedRequest) returns (ListRecommendedResponse);
+  rpc CreateToy (CreateToyRequest) returns (CreateToyResponse) {
+    option (google.api.http) = {
+      post: "/v1/toys"
+      body: "*"
+    };
+  }
+
+  rpc DeleteToy (DeleteToyRequest) returns (DeleteToyResponse) {
+    option (google.api.http) = {
+      delete: "/v1/toys/{toy_id}"
+    };
+  }
+
+  rpc ChangeToy (ChangeToyRequest) returns (ChangeToyResponse) {
+    option (google.api.http) = {
+      patch: "/v1/toys/{toy.id}"
+      body: "*"
+    };
+  }
+
+  rpc GetToysByIds (GetToysByIdsRequest) returns (GetToysByIdsResponse) {
+    option (google.api.http) = {
+      post: "/v1/toys/batch"
+      body: "*"
+    };
+  }
+
+  rpc GetToy (GetToyRequest) returns (GetToyResponse) {
+    option (google.api.http) = {
+      get: "/v1/toys/{toy_id}"
+    };
+  }
+
+  rpc ListToy (ListToyRequest) returns (ListToyResponse) {
+    option (google.api.http) = {
+      get: "/v1/toys"
+    };
+  }
+
+  rpc ListRecommended (ListRecommendedRequest) returns (ListRecommendedResponse) {
+    option (google.api.http) = {
+      get: "/v1/toys/recommended"
+    };
+  }
 }
 
 enum Status {
@@ -65,7 +104,6 @@ message Metadata {
   int32 LastPage = 4;
   int32 TotalRecords = 5;
 }
-
 
 message CreateToyRequest {
   string title = 1;
