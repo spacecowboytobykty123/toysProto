@@ -7,6 +7,7 @@
 package toys
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -1309,7 +1310,7 @@ var File_toys_toys_proto protoreflect.FileDescriptor
 
 const file_toys_toys_proto_rawDesc = "" +
 	"\n" +
-	"\x0ftoys/toys.proto\x12\x04toys\x1a\x1cgoogle/api/annotations.proto\"\x94\x02\n" +
+	"\x0ftoys/toys.proto\x12\x04toys\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x94\x02\n" +
 	"\x03Toy\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -1432,16 +1433,18 @@ const file_toys_toys_proto_rawDesc = "" +
 	"\x19STATUS_INVALID_CATEGORIES\x10\x05\x12\x19\n" +
 	"\x15STATUS_INVALID_RECAGE\x10\x06\x12\x1f\n" +
 	"\x1bSTATUS_INVALID_MANUFACTURER\x10\a\x12\x19\n" +
-	"\x15STATUS_INTERNAL_ERROR\x10\b2\xf8\x04\n" +
-	"\x04Toys\x12Q\n" +
-	"\tCreateToy\x12\x16.toys.CreateToyRequest\x1a\x17.toys.CreateToyResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/toys\x12W\n" +
-	"\tDeleteToy\x12\x16.toys.DeleteToyRequest\x1a\x17.toys.DeleteToyResponse\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/toys/{toy_id}\x12Z\n" +
-	"\tChangeToy\x12\x16.toys.ChangeToyRequest\x1a\x17.toys.ChangeToyResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*2\x11/v1/toys/{toy.id}\x12`\n" +
-	"\fGetToysByIds\x12\x19.toys.GetToysByIdsRequest\x1a\x1a.toys.GetToysByIdsResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/toys/batch\x12N\n" +
-	"\x06GetToy\x12\x13.toys.GetToyRequest\x1a\x14.toys.GetToyResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/toys/{toy_id}\x12H\n" +
-	"\aListToy\x12\x14.toys.ListToyRequest\x1a\x15.toys.ListToyResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
-	"\x12\b/v1/toys\x12l\n" +
-	"\x0fListRecommended\x12\x1c.toys.ListRecommendedRequest\x1a\x1d.toys.ListRecommendedResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/v1/toys/recommendedB\x0fZ\rStoys.v1;toysb\x06proto3"
+	"\x15STATUS_INTERNAL_ERROR\x10\b2\xf8\b\n" +
+	"\x04Toys\x12\x89\x01\n" +
+	"\tCreateToy\x12\x16.toys.CreateToyRequest\x1a\x17.toys.CreateToyResponse\"K\x92A5\x12\x10Create a new toy\x1a!Adds a new toy to the collection.\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/toys\x12\x99\x01\n" +
+	"\tDeleteToy\x12\x16.toys.DeleteToyRequest\x1a\x17.toys.DeleteToyResponse\"[\x92A?\x12\fDelete a toy\x1a/Removes a toy from the collection using its ID.\x82\xd3\xe4\x93\x02\x13*\x11/v1/toys/{toy_id}\x12\xa2\x01\n" +
+	"\tChangeToy\x12\x16.toys.ChangeToyRequest\x1a\x17.toys.ChangeToyResponse\"d\x92AE\x12\x12Update toy details\x1a/Modifies existing toy information using its ID.\x82\xd3\xe4\x93\x02\x16:\x01*2\x11/v1/toys/{toy.id}\x12\xa1\x01\n" +
+	"\fGetToysByIds\x12\x19.toys.GetToysByIdsRequest\x1a\x1a.toys.GetToysByIdsResponse\"Z\x92A>\x12\x16Retrieve multiple toys\x1a$Fetches a list of toys by their IDs.\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/toys/batch\x12\x9a\x01\n" +
+	"\x06GetToy\x12\x13.toys.GetToyRequest\x1a\x14.toys.GetToyResponse\"e\x92AI\x12\x0fGet toy details\x1a6Retrieves information about a single toy using its ID.\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/toys/{toy_id}\x12\x8b\x01\n" +
+	"\aListToy\x12\x14.toys.ListToyRequest\x1a\x15.toys.ListToyResponse\"S\x92A@\x12\rList all toys\x1a/Returns a paginated list of all toys available.\x82\xd3\xe4\x93\x02\n" +
+	"\x12\b/v1/toys\x12\xd3\x01\n" +
+	"\x0fListRecommended\x12\x1c.toys.ListRecommendedRequest\x1a\x1d.toys.ListRecommendedResponse\"\x82\x01\x92Ac\x12\x14Get recommended toys\x1aKReturns a list of recommended toys based on user preferences or popularity.\x82\xd3\xe4\x93\x02\x16\x12\x14/v1/toys/recommendedB\xdf\x01\x92A\xcc\x01\x12\xa2\x01\n" +
+	"\bToys API\x12QAPI for managing toys, including creation, update, deletion, and recommendations.\">\n" +
+	"\fSupport Team\x12\x16https://yourdomain.com\x1a\x16support@yourdomain.com2\x031.0*\x01\x022\x10application/json:\x10application/jsonZ\rStoys.v1;toysb\x06proto3"
 
 var (
 	file_toys_toys_proto_rawDescOnce sync.Once

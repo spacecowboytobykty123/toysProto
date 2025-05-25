@@ -5,6 +5,23 @@ package toys;
 option go_package = "Stoys.v1;toys";
 
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Toys API";
+    version: "1.0";
+    description: "API for managing toys, including creation, update, deletion, and recommendations.";
+    contact: {
+      name: "Support Team";
+      url: "https://yourdomain.com";
+      email: "support@yourdomain.com";
+    }
+  };
+  schemes: HTTPS;
+  consumes: "application/json";
+  produces: "application/json";
+};
 
 service Toys {
   rpc CreateToy (CreateToyRequest) returns (CreateToyResponse) {
@@ -12,11 +29,19 @@ service Toys {
       post: "/v1/toys"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Create a new toy"
+      description: "Adds a new toy to the collection."
+    };
   }
 
   rpc DeleteToy (DeleteToyRequest) returns (DeleteToyResponse) {
     option (google.api.http) = {
       delete: "/v1/toys/{toy_id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Delete a toy"
+      description: "Removes a toy from the collection using its ID."
     };
   }
 
@@ -25,6 +50,10 @@ service Toys {
       patch: "/v1/toys/{toy.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Update toy details"
+      description: "Modifies existing toy information using its ID."
+    };
   }
 
   rpc GetToysByIds (GetToysByIdsRequest) returns (GetToysByIdsResponse) {
@@ -32,11 +61,19 @@ service Toys {
       post: "/v1/toys/batch"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Retrieve multiple toys"
+      description: "Fetches a list of toys by their IDs."
+    };
   }
 
   rpc GetToy (GetToyRequest) returns (GetToyResponse) {
     option (google.api.http) = {
       get: "/v1/toys/{toy_id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get toy details"
+      description: "Retrieves information about a single toy using its ID."
     };
   }
 
@@ -44,11 +81,19 @@ service Toys {
     option (google.api.http) = {
       get: "/v1/toys"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List all toys"
+      description: "Returns a paginated list of all toys available."
+    };
   }
 
   rpc ListRecommended (ListRecommendedRequest) returns (ListRecommendedResponse) {
     option (google.api.http) = {
       get: "/v1/toys/recommended"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get recommended toys"
+      description: "Returns a list of recommended toys based on user preferences or popularity."
     };
   }
 }

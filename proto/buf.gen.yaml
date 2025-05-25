@@ -11,3 +11,10 @@ plugins:
   - plugin: grpc-gateway
     out: C:\Users\Еркебулан\GolandProjects\toysProto\gen\go
     opt: paths=source_relative
+
+  - plugin: openapiv2
+    out: C:\Users\Еркебулан\GolandProjects\toysProto\gen\swagger
+    opt:
+      - logtostderr=true
+      - allow_merge=true
+      - merge_file_name=subscription

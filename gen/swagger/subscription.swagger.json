@@ -1,0 +1,709 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Toys API",
+    "description": "API for managing toys, including creation, update, deletion, and recommendations.",
+    "version": "1.0",
+    "contact": {
+      "name": "Support Team",
+      "url": "https://yourdomain.com",
+      "email": "support@yourdomain.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Toys"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/toys": {
+      "get": {
+        "summary": "List all toys",
+        "description": "Returns a paginated list of all toys available.",
+        "operationId": "Toys_ListToy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysListToyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortSafeList",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "categories",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      },
+      "post": {
+        "summary": "Create a new toy",
+        "description": "Adds a new toy to the collection.",
+        "operationId": "Toys_CreateToy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysCreateToyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/toysCreateToyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      }
+    },
+    "/v1/toys/batch": {
+      "post": {
+        "summary": "Retrieve multiple toys",
+        "description": "Fetches a list of toys by their IDs.",
+        "operationId": "Toys_GetToysByIds",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysGetToysByIdsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/toysGetToysByIdsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      }
+    },
+    "/v1/toys/recommended": {
+      "get": {
+        "summary": "Get recommended toys",
+        "description": "Returns a list of recommended toys based on user preferences or popularity.",
+        "operationId": "Toys_ListRecommended",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysListRecommendedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Toys"
+        ]
+      }
+    },
+    "/v1/toys/{toy.id}": {
+      "patch": {
+        "summary": "Update toy details",
+        "description": "Modifies existing toy information using its ID.",
+        "operationId": "Toys_ChangeToy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysChangeToyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "toy.id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ToysChangeToyBody"
+            }
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      }
+    },
+    "/v1/toys/{toyId}": {
+      "get": {
+        "summary": "Get toy details",
+        "description": "Retrieves information about a single toy using its ID.",
+        "operationId": "Toys_GetToy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysGetToyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "toyId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a toy",
+        "description": "Removes a toy from the collection using its ID.",
+        "operationId": "Toys_DeleteToy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/toysDeleteToyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "toyId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Toys"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ToysChangeToyBody": {
+      "type": "object",
+      "properties": {
+        "toy": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "format": "int64"
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "skills": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "recommendedAge": {
+              "type": "string"
+            },
+            "manufacturer": {
+              "type": "string"
+            },
+            "isAvailable": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "toysChangeToyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "errorMsg": {
+          "type": "string"
+        }
+      }
+    },
+    "toysCreateToyRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recommendedAge": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "isAvailable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "toysCreateToyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "errorMsg": {
+          "type": "string"
+        },
+        "toy": {
+          "$ref": "#/definitions/toysToy"
+        }
+      }
+    },
+    "toysDeleteToyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "errorMsg": {
+          "type": "string"
+        }
+      }
+    },
+    "toysGetToyResponse": {
+      "type": "object",
+      "properties": {
+        "toy": {
+          "$ref": "#/definitions/toysToy"
+        },
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "toysGetToysByIdsRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "toysGetToysByIdsResponse": {
+      "type": "object",
+      "properties": {
+        "toy": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/toysToySummary"
+          }
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "toysListRecommendedResponse": {
+      "type": "object",
+      "properties": {
+        "toys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/toysToy"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "errorMsg": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/toysMetadata"
+        }
+      }
+    },
+    "toysListToyResponse": {
+      "type": "object",
+      "properties": {
+        "toys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/toysToy"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/toysStatus"
+        },
+        "errorMsg": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/toysMetadata"
+        }
+      }
+    },
+    "toysMetadata": {
+      "type": "object",
+      "properties": {
+        "CurrentPage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "FirstPage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "LastPage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "TotalRecords": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "toysStatus": {
+      "type": "string",
+      "enum": [
+        "STATUS_OK",
+        "STATUS_INVALID_TITLE",
+        "STATUS_INVALID_DESC",
+        "STATUS_INVALID_VALUE",
+        "STATUS_INVALID_IMAGES",
+        "STATUS_INVALID_CATEGORIES",
+        "STATUS_INVALID_RECAGE",
+        "STATUS_INVALID_MANUFACTURER",
+        "STATUS_INTERNAL_ERROR"
+      ],
+      "default": "STATUS_OK"
+    },
+    "toysToy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recommendedAge": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "isAvailable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "toysToySummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "imageUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "toysToyUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recommendedAge": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "isAvailable": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
